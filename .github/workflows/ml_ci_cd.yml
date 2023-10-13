@@ -43,10 +43,6 @@ jobs:
       run: sed -i 's/{github.sha}/${{github.event.client_payload.sha }}/g' manifest/k8s.yaml
     - name: show k8s.yaml 
       run: cat manifest/k8s.yaml
-    - name: imprimir namespace
-      run: cat ${{ steps.namespace.outputs.kubeconfig }}
-    - name: imprimir okteto Token
-      run: cat ${{secrets.OKTETO_TOKEN }}
     - uses: okteto/context@2.7.0
       with:
         token: ${{secrets.OKTETO_TOKEN }}
